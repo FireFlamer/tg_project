@@ -1,6 +1,8 @@
 import sqlite3
+from db.db import build_users_db
 
 db_name = "users.db"
+build_users_db(db_name=db_name)
 
 class User:
     

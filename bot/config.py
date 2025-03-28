@@ -1,3 +1,3 @@
-TOKEN = ''
+TOKEN = '7687994827:AAGvK5v4IaYIJ94BZCG6mOi2yJPTEVYx8Fk'
 ADMINS = []
 db_name = 'users.db'

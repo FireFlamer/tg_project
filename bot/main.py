@@ -21,10 +21,12 @@ def user_reg(call: types.CallbackQuery):
     menu(message=call.message, user_id=call.from_user.id)
 
 def menu(message: types.Message, user_id: int):
-    text = f"Добро пожаловать!\nВаша роль: {User.get_user_role(user_id=user_id)}"
-
-    bot.send_message(chat_id=message.chat.id, text=text, reply_markup=menu_keyboard(profile_name=User.get_user_role(user_id)))
-
+    if User.get_user_role(user_id=user_id):
+        text = f"Добро пожаловать!\nВаша роль: {User.get_user_role(user_id=user_id)}"
+        bot.send_message(chat_id=message.chat.id, text=text, reply_markup=menu_keyboard(profile_name=User.get_user_role(user_id=user_id)))
+    else:
+        bot.send_message(chat_id=message.chat.id, text="Вы не зарегестрированны! Для регистрации введите команду /start")
+        
 @bot.callback_query_handler(func=lambda call: call.data == 'menu')
 def return_to_menu(call: types.CallbackQuery):
     bot.answer_callback_query(callback_query_id=call.id)

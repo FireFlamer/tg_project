@@ -2,6 +2,6 @@ services:
   bot:
     image: tg_bot
     build:
-      context: /app .
+      context: /bot .
       dockerfile: Dockerfile.bot 
     restart: on-failure
